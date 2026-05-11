@@ -49,6 +49,7 @@ ENV POETRY_VIRTUALENVS_CREATE=false
 RUN poetry config installer.max-workers 10
 RUN poetry cache clear . --all --no-interaction
 ENV POETRY_HTTP_TIMEOUT=120
+ENV POETRY_VIRTUALENVS_IN_PROJECT=true
 RUN poetry install --no-dev --no-root -vvv
 RUN poetry build -f wheel -n 
 RUN pip3 install --no-deps dist/*.whl --timeout 1000 
