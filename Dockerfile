@@ -46,7 +46,7 @@ RUN pip3 install --no-cache-dir -U 'pip<20' --timeout 1000
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8
 ENV POETRY_VIRTUALENVS_CREATE=false
-RUN poetry install --no-dev --no-root --vvv
+RUN poetry install --no-dev --no-root -vvv
 RUN poetry build -f wheel -n 
 RUN pip3 install --no-deps dist/*.whl --timeout 1000 
 RUN rm -rf dist *.egg-info
