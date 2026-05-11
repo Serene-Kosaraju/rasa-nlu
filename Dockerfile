@@ -22,14 +22,16 @@ RUN apt-get update -qq && \
   libssl-dev \
   libffi-dev \
   libpng-dev
-
+RUN apt-get update && apt-get install -y build-essential libpq-dev
 # install poetry
 # keep this in sync with the version in pyproject.toml and Dockerfile
 ENV POETRY_VERSION 1.0.5
 #RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 #RUN curl -sSL https://install.python-poetry.org | python3
 RUN pip3 install poetry --timeout 1000
-ENV PATH "/root/.poetry/bin:/opt/venv/bin:${PATH}"
+# ENV PATH "/root/.poetry/bin:/opt/venv/bin:${PATH}"
+ENV POETRY_HOME="/opt/poetry"
+ENV PATH="$POETRY_HOME/bin:$PATH"
 
 # copy files
 COPY . /build/
