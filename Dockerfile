@@ -26,7 +26,8 @@ RUN apt-get update -qq && \
 # install poetry
 # keep this in sync with the version in pyproject.toml and Dockerfile
 ENV POETRY_VERSION 1.0.5
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+#RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+RUN curl -sSL https://install.python-poetry.org | python3
 ENV PATH "/root/.poetry/bin:/opt/venv/bin:${PATH}"
 
 # copy files
