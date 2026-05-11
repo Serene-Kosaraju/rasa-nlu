@@ -39,12 +39,12 @@ WORKDIR /build
 
 # install dependencies
 RUN python -m venv /opt/venv && \
-  . /opt/venv/bin/activate && \
-  pip3 install --no-cache-dir -U 'pip<20' --timeout 1000 && \
-  poetry install --no-dev --no-root --no-interaction && \
-  poetry build -f wheel -n && \
-  pip3 install --no-deps dist/*.whl --timeout 1000 && \
-  rm -rf dist *.egg-info
+  . /opt/venv/bin/activate
+RUN pip3 install --no-cache-dir -U 'pip<20' --timeout 1000 
+RUN  poetry install --no-dev --no-root --no-interaction
+RUN poetry build -f wheel -n 
+RUN pip3 install --no-deps dist/*.whl --timeout 1000 
+RUN rm -rf dist *.egg-info
 
 # start a new build stage
 FROM base as runner
