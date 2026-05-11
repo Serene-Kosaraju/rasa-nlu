@@ -43,14 +43,14 @@ WORKDIR /build
 RUN python -m venv /opt/venv && \
   . /opt/venv/bin/activate
 RUN pip3 install --no-cache-dir -U 'pip<20' --timeout 1000 
-ENV LANG=C.UTF-8
-ENV LC_ALL=C.UTF-8
-ENV POETRY_VIRTUALENVS_CREATE=false
-RUN poetry config installer.max-workers 10
-RUN poetry cache clear . --all --no-interaction
-ENV POETRY_HTTP_TIMEOUT=120
-ENV POETRY_VIRTUALENVS_IN_PROJECT=true
-RUN poetry install --no-dev --no-root --no-interaction
+# ENV LANG=C.UTF-8
+# ENV LC_ALL=C.UTF-8
+# ENV POETRY_VIRTUALENVS_CREATE=false
+# RUN poetry config installer.max-workers 10
+# RUN poetry cache clear . --all --no-interaction
+# ENV POETRY_HTTP_TIMEOUT=120
+# ENV POETRY_VIRTUALENVS_IN_PROJECT=true
+# RUN poetry install --no-dev --no-root --no-interaction
 RUN poetry build -f wheel -n 
 RUN pip3 install --no-deps dist/*.whl --timeout 1000 
 RUN rm -rf dist *.egg-info
