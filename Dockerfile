@@ -20,7 +20,6 @@ RUN apt-get update -qq && \
   git-core \
   openssl \
   libssl-dev \
-  libffi6 \
   libffi-dev \
   libpng-dev
 
