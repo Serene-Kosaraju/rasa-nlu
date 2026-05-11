@@ -28,7 +28,7 @@ RUN apt-get update -qq && \
 ENV POETRY_VERSION 1.0.5
 #RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 #RUN curl -sSL https://install.python-poetry.org | python3
-RUN pip install poetry --timeout 1000
+RUN pip3 install poetry --timeout 1000
 ENV PATH "/root/.poetry/bin:/opt/venv/bin:${PATH}"
 
 # copy files
@@ -40,10 +40,10 @@ WORKDIR /build
 # install dependencies
 RUN python -m venv /opt/venv && \
   . /opt/venv/bin/activate && \
-  pip install --no-cache-dir -U 'pip<20' --timeout 1000 && \
+  pip3 install --no-cache-dir -U 'pip<20' --timeout 1000 && \
   poetry install --no-dev --no-root --no-interaction && \
   poetry build -f wheel -n && \
-  pip install --no-deps dist/*.whl --timeout 1000 && \
+  pip3 install --no-deps dist/*.whl --timeout 1000 && \
   rm -rf dist *.egg-info
 
 # start a new build stage
