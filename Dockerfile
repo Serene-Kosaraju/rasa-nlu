@@ -51,7 +51,7 @@ RUN pip3 install --no-cache-dir -U 'pip<20' --timeout 1000
 # ENV POETRY_HTTP_TIMEOUT=120
 # ENV POETRY_VIRTUALENVS_IN_PROJECT=true
 # RUN poetry install --no-dev --no-root --no-interaction
-RUN poetry build -f wheel -n 
+# RUN poetry build -f wheel -n 
 RUN pip3 install --no-deps dist/*.whl --timeout 1000 
 RUN rm -rf dist *.egg-info
 
