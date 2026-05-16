@@ -92,8 +92,8 @@ COPY . /app
 USER root
 
 # Optional: Train the model during build (alternatively, copy a pre-trained model)
-RUN rasa init
-RUN rasa train nlu
+# RUN rasa init
+# RUN rasa train nlu
 
 # Expose the default Rasa port
 EXPOSE 5005
